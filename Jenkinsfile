@@ -18,13 +18,13 @@ pipeline {
          }
          stage("build") {
              steps {
-                 sh "sudo docker build -t sampleapp ."
+                 sh "docker build -t sampleapp ."
              }
          }
          stage("run") {
              steps {
-                 sh "sudo docker rm -f sampleapp"
-                 sh "sudo docker run -d -p 5000:5000 --name sampleapp sampleapp"
+                 sh "docker rm -f sampleapp"
+                 sh "docker run -d -p 5000:5000 --name sampleapp sampleapp"
              }
          }
      }
