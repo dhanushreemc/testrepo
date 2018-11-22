@@ -6,9 +6,14 @@ pipeline {
                 checkout scm
              }
          }
-         stage("result") {
+         stage("build") {
              steps {
-                 echo "Build successful"
+                 sh "sudo docker build -t sampleapp ."
+             }
+         }
+         stage("run") {
+             steps {
+                 sh "sudo docker run -d -p 5000:5000 --name sampleapp sampleapp"
              }
          }
      }
