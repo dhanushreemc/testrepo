@@ -6,18 +6,15 @@ pipeline {
                 checkout scm
              }
          }
-         stage("result") {
+         stage("build") {
              steps {
-                 echo "Build successful"
+                 sh "sudo docker build -t sampleapp ."
              }
          }
-     }
-     post {
-        success {
-              setBuildStatus("Build succeeded", "SUCCESS");
-        }
-        failure {
-              setBuildStatus("Build failed", "FAILURE");
-        }
+         stage("run") {
+             steps {
+                 sh "sudo docker run -d -p 5000:5000 --name sampleapp sampleapp"
+             }
+         }
      }
 }
