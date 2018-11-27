@@ -23,7 +23,7 @@ pipeline {
          }
          stage("run") {
              steps {
-                 sh "docker rm -f sampleapp"
+                 //sh "docker rm -f sampleapp"
                  sh "docker run -d -p 5000:5000 --name sampleapp sampleapp"
              }
          }
