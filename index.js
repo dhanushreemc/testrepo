@@ -7,7 +7,6 @@ app.use(express.static(__dirname + '/public'))
 app.get('/', function(request, response) {
   response.send('Hello World.........##**!')
   response.send('welcome.........##**!')
-  response.send('@@@@@welcome@@@@@. !!!########!!!........##**!')
 })
 
 app.listen(app.get('port'), function() {
